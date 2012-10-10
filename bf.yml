@@ -1,0 +1,45 @@
+etc:
+    source: |
+        incremental-tar
+        --max-level=1
+        +/etc
+        -.git
+
+    encoders:
+        - compress
+        - encrypt
+
+    run: daily
+    rotate: 3
+    regroup: weekly
+
+live:
+    source: |
+        incremental-tar
+        --max-level=unlim
+        +/home/nailgun/live
+        #TODO: !important or .backup files
+
+    encoders:
+        - encrypt
+
+    run: daily
+    rotate: none
+    regroup: none
+
+buss.sql:
+    source: |
+        mysqldump-sql
+        --db=zyzz_biz
+        --user=zyzz_biz
+        --password-file=./zyzz_biz.pass
+
+    encoders:
+        - compress
+        - encrypt
+
+    run: daily
+    rotate: 30
+    regroup: none
+
+    rsync: zyzz.biz@backup.nailgun.name:~

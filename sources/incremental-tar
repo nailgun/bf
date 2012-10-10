@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#parse options
+
+exec tar -c $1

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source $BF_ROOT/compress.conf
+source $BF_ROOT/encoders/$ENCODER

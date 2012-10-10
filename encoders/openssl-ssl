@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DEFAULT_CONF_FILE=$BF_ROOT/openssl.conf
+
+source $DEFAULT_CONF_FILE
+
+exec openssl
